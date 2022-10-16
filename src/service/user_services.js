@@ -19,7 +19,7 @@ const UserLogin = async (data) => {
       if (!matchPassword) {
         return { ...requestResponse.invalid_login };
       } else {
-        return { ...requestResponse.success, jwtToken };
+        return { ...requestResponse.success, token:jwtToken };
       }
     }
   } catch (error) {

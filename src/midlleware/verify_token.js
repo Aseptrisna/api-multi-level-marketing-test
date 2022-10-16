@@ -6,11 +6,15 @@ dotenv.config();
 
 const VerifyToken = async (req, res, next) => {
   const token = req.headers[process.env.HEADERS];
-  if (!token) response = { ...requestResponse.not_token };
-  return res.status(response.code).json(response);
+  if (!token)
+    return res
+      .status(403)
+      .send({ status: false, message: "No token provided" });
   jwt.verify(token, process.env.SECRET_KEY, function (err, decoded) {
-    if (err) response = { ...requestResponse.token_invalid };
-    return res.status(response.code).json(response);
+    if (err)
+      return res
+        .status(500)
+        .send({ status: false, message: "Failed to authenticate token !" });
     next();
   });
 };

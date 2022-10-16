@@ -7,7 +7,6 @@ const dataSchema = new mongoose.Schema(
       type: String,
     },
     guid_parent: {
-      required: true,
       type: String,
       default:""
     },
@@ -17,7 +16,11 @@ const dataSchema = new mongoose.Schema(
     },
     level: {
       type: Number,
-      default:4
+      default:0
+    },
+    member_code: {
+      type: Number,
+      default:0
     },
     bonus: {
       type: Number,
